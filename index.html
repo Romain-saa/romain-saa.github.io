@@ -363,6 +363,106 @@
     .socials a:hover,
     .socials a:focus-visible { color: var(--accent); }
 
+    /* ===== PANNEAU DE CONTACT ===== */
+    .contact { position: relative; }
+
+    .contact-toggle {
+      padding: 0;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 1em;
+      font-weight: 700;
+      cursor: pointer;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+      transition: color 0.3s;
+    }
+
+    .contact-toggle:hover,
+    .contact-toggle:focus-visible,
+    .contact-toggle[aria-expanded="true"] { color: var(--accent); }
+
+    /* Le panneau s'ouvre au-dessus du lien */
+    .contact-panel {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 14px);
+      z-index: 20;
+      transform: translateX(-50%);
+      display: grid;
+      gap: 8px;
+      width: max-content;
+      max-width: calc(100vw - 30px);
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      background-color: rgba(18, 24, 33, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px var(--accent-soft);
+      text-align: left;
+      animation: pop 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .contact-panel[hidden] { display: none; }
+
+    @keyframes pop {
+      from { opacity: 0; transform: translate(-50%, 8px); }
+      to   { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .socials .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.95em;
+      text-shadow: none;
+    }
+
+    .contact-link svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .socials .contact-link:hover { color: var(--accent); }
+
+    .copy-btn {
+      flex-shrink: 0;
+      min-width: 74px;
+      padding: 6px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      font-family: inherit;
+      font-size: 0.82em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .copy-btn:hover { background-color: var(--accent-soft); }
+
+    .copy-btn.done {
+      background-color: var(--accent);
+      color: var(--on-accent);
+    }
+
     /* ===== EFFET MACHINE À ÉCRIRE (idée 3) ===== */
     .typed::after {
       content: "_";
@@ -526,7 +626,28 @@
       </div>
 
       <ul class="socials fade-up delay-5">
-        <li><a href="mailto:romain.luypaerts@gmail.com">Me contacter</a></li>
+        <li class="contact">
+          <button type="button" class="contact-toggle" id="contactToggle"
+                  aria-expanded="false" aria-controls="contactPanel">Me contacter</button>
+
+          <!-- Panneau de contact : e-mail (copiable) et téléphone -->
+          <div class="contact-panel" id="contactPanel" hidden>
+            <div class="contact-row">
+              <a href="mailto:romain.luypaerts@gmail.com" class="contact-link">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+                romain.luypaerts@gmail.com
+              </a>
+              <button type="button" class="copy-btn" data-copy="romain.luypaerts@gmail.com">Copier</button>
+            </div>
+            <div class="contact-row">
+              <a href="tel:+33676773072" class="contact-link">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                06 76 77 30 72
+              </a>
+              <button type="button" class="copy-btn" data-copy="06 76 77 30 72">Copier</button>
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
   </header>
@@ -579,6 +700,52 @@
       if (i < text.length) setTimeout(type, 55);
     }, 600);
   }
+
+  // Panneau "Me contacter"
+  const contactToggle = document.getElementById("contactToggle");
+  const contactPanel = document.getElementById("contactPanel");
+
+  function setContact(open) {
+    contactPanel.hidden = !open;
+    contactToggle.setAttribute("aria-expanded", String(open));
+  }
+
+  contactToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setContact(contactPanel.hidden);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".contact")) setContact(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setContact(false);
+  });
+
+  // Boutons "Copier"
+  document.querySelectorAll(".copy-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const text = btn.dataset.copy;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        // solution de secours pour les anciens navigateurs
+        const field = document.createElement("textarea");
+        field.value = text;
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand("copy");
+        field.remove();
+      }
+      btn.textContent = "Copié !";
+      btn.classList.add("done");
+      setTimeout(() => {
+        btn.textContent = "Copier";
+        btn.classList.remove("done");
+      }, 1800);
+    });
+  });
 </script>
 
 </body>
