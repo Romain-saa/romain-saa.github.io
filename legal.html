@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Mentions légales | Romain Luypaerts</title>
+  <meta name="description" content="Mentions légales du portfolio de Romain Luypaerts.">
+
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .legal {
+      border-left-width: 1px;
+    }
+
+    .legal:hover { transform: none; }
+
+    .legal h2 {
+      color: var(--accent);
+      font-size: 1.15em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 32px 0 10px;
+    }
+
+    .legal h2:first-of-type { margin-top: 0; }
+
+    .legal p { margin: 0 0 12px; }
+
+    .legal a { color: var(--accent); }
+    .legal a:hover { text-decoration: underline; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      color: var(--text-muted);
+      font-weight: 700;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .back-link svg { width: 18px; height: 18px; }
+
+    .back-link:hover,
+    .back-link:focus-visible { color: var(--accent); transform: translateX(-3px); }
+  </style>
+</head>
+
+<body>
+
+<div class="page-bg" aria-hidden="true"></div>
+
+<nav class="navbar" aria-label="Navigation principale">
+  <ul class="nav-links" id="navLinks">
+    <li><a href="accueil.html">Accueil</a></li>
+    <li><a href="projet.html">Projets</a></li>
+    <li><a href="veille.html">Veille</a></li>
+    <li><a href="CV.html">CV</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="a_propos.html">À propos de moi</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="burger" id="burgerButton"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false" aria-controls="navLinks">☰</button>
+  </div>
+</nav>
+
+<main class="page-main">
+  <a href="accueil.html" class="back-link" id="backLink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Retour</a>
+
+  <header class="page-head">
+    <h1 class="neon">Mentions légales</h1>
+  </header>
+
+  <article class="card legal">
+    <h2>Éditeur du site</h2>
+    <p>Le site <strong>e-CV | Romain Luypaerts</strong> est édité par :</p>
+    <p>
+      <strong>Nom :</strong> Romain Luypaerts<br>
+      <strong>Adresse :</strong> 1 Avenue Edouard Herriot, Montmélian 73800<br>
+      <strong>Email :</strong> <a href="mailto:romain.luypaerts@gmail.com">romain.luypaerts@gmail.com</a><br>
+      <strong>Téléphone :</strong> 06.76.77.30.72
+    </p>
+
+    <h2>Hébergeur</h2>
+    <p>Le site est hébergé par :</p>
+    <p>
+      <strong>Nom de l’hébergeur :</strong> Romain Luypaerts (Auto-hébergé)<br>
+      <strong>Adresse :</strong> 1 Avenue Edouard Herriot, Montmélian 73800<br>
+      <strong>Téléphone :</strong> 06.76.77.30.72<br>
+      <strong>Site web :</strong> <a href="accueil.html">romain-luypaerts.fr</a>
+    </p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>Tous les contenus présents sur ce site (textes, images, vidéos, logos) sont protégés par le droit d'auteur et restent la propriété de Romain Luypaerts, sauf mention contraire. Toute reproduction ou utilisation des contenus sans autorisation expresse est interdite.</p>
+
+    <h2>Crédits</h2>
+    <p>Image de fond : TheDigitalArtist / Pixabay (licence Pixabay, libre de droits).</p>
+
+    <h2>Responsabilité</h2>
+    <p>L'éditeur ne peut être tenu responsable des dommages directs ou indirects résultant de l'accès ou de l'utilisation de ce site ou des informations qu'il contient.</p>
+
+    <h2>Liens externes</h2>
+    <p>Le site peut contenir des liens vers d’autres sites. L’éditeur n’est pas responsable du contenu de ces sites externes.</p>
+
+    <h2>Modification des mentions légales</h2>
+    <p>L’éditeur se réserve le droit de modifier les présentes mentions légales à tout moment. Les modifications prendront effet dès leur publication sur cette page.</p>
+  </article>
+</main>
+
+<footer>
+  <p>&copy; 2026 Romain Luypaerts</p>
+  <p>
+    <a href="privacy.html">Politique de confidentialité</a> /
+    <a href="legal.html" aria-current="page">Mentions légales</a>
+  </p>
+</footer>
+
+<script src="menu.js"></script>
+<script>
+  // Bouton retour : revient à la page précédente, sinon à l'accueil
+  document.getElementById("backLink").addEventListener("click", (e) => {
+    if (history.length > 1) {
+      e.preventDefault();
+      history.back();
+    }
+  });
+</script>
+
+</body>
+</html>

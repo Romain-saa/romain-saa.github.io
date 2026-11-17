@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Legal Notice | Romain Luypaerts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700">
+  
+  <style>
+    /* ===== GLOBAL ===== */
+    body, html {
+      margin: 0;
+      font-family: "Raleway", sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+    }
+
+    /* ===== BACK BUTTON ===== */
+    .back-btn {
+      position: fixed;
+      top: 80px;
+      left: 20px;
+      z-index: 1000;
+      background: rgba(0, 255, 136, 0.1);
+      color: #00FF88;
+      border: 1px solid #00FF88;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 24px;
+      backdrop-filter: blur(5px);
+      transform: rotate(180deg);
+    }
+
+    .back-btn:hover {
+      background: #00FF88;
+      color: black;
+      transform: rotate(180deg) scale(1.1);
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+    }
+
+    /* ===== CONTENT STYLING ===== */
+    .content {
+      max-width: 900px;
+      margin: 140px auto 80px;
+      padding: 0 20px;
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 255, 136, 0.1);
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .neon-title {
+      text-align: center;
+      color: #baffd9;
+      font-size: 3em;
+      font-weight: 700;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 0 15px rgba(186, 255, 217, 0.6);
+      text-decoration: underline;
+      text-underline-offset: 15px;
+      text-decoration-color: #00FF88;
+    }
+
+    h2 {
+      color: #00FF88;
+      margin-top: 35px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.3em;
+      letter-spacing: 1px;
+    }
+
+    p {
+      line-height: 1.8;
+      color: #bbb;
+      font-size: 1.05em;
+    }
+
+    a {
+      color: #00FF88;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== NAVBAR ===== */
+    .w3-top { z-index: 1001; }
+    .w3-bar {
+      background-color: rgba(0,0,0,0.9) !important;
+      backdrop-filter: blur(8px);
+      padding: 5px 0;
+    }
+
+    .w3-bar .w3-button {
+      font-weight: 600;
+      transition: all 0.3s;
+      color: white !important;
+      background: none !important;
+    }
+
+    .w3-bar .nav-active {
+      color: #00FF88 !important; 
+      border-bottom: 3px solid #00FF88 !important;
+    }
+
+    .w3-bar .w3-button:hover:not(.nav-active) {
+      color: #00FF88 !important;
+      transform: translateY(-2px);
+    }
+
+    /* ===== LANGUAGE MENU ===== */
+    .lang-menu { position: fixed; top: 15px; right: 20px; z-index: 2000; }
+    .lang-globe {
+      background-color: rgba(0,0,0,0.6);
+      border: 1px solid #00FF88;
+      border-radius: 50%;
+      padding: 10px 14px;
+      font-size: 18px;
+      cursor: pointer;
+      color: #ccffdd;
+      transition: 0.3s;
+    }
+    .lang-globe:hover { background-color: #00FF88; color: black; transform: scale(1.1); }
+
+    .lang-dropdown {
+      display: none; position: absolute; top: 55px; right: 0;
+      background-color: rgba(0,0,0,0.95);
+      border: 1px solid #00FF88; border-radius: 8px;
+      min-width: 140px; overflow: hidden;
+    }
+    .lang-dropdown button {
+      background: none; border: none; color: #ccffdd; padding: 12px 15px;
+      width: 100%; cursor: pointer; font-weight: 600; transition: 0.2s;
+    }
+    .lang-dropdown button:hover { background-color: rgba(0, 255, 136, 0.1); color: #00FF88; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #080808;
+      color: #888;
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid rgba(0, 255, 136, 0.1);
+    }
+    footer a { color: #888; margin: 0 10px; text-decoration: none; }
+    footer a:hover { color: #00FF88; }
+  </style>
+</head>
+
+<body>
+
+<!-- Back Button -->
+<div class="back-btn" onclick="goBack()" title="Back">
+  &#10140; 
+</div>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-card">
+    <a href="home.html" class="w3-bar-item w3-button">Home</a>
+    <a href="projects.html" class="w3-bar-item w3-button">Projects</a>
+    <a href="tech-watch.html" class="w3-bar-item w3-button">Tech Watch</a>
+    <a href="cv-en.html" class="w3-bar-item w3-button">CV</a>
+    <a href="skills.html" class="w3-bar-item w3-button">Skills</a>
+    <a href="about.html" class="w3-bar-item w3-button">About Me</a>
+    <a href="legal-en.html" class="w3-bar-item w3-button nav-active">Legal Notice</a>
+  </div>
+</div>
+
+<!-- Globe -->
+<div class="lang-menu">
+  <button class="lang-globe" onclick="toggleLangMenu()">🌐</button>
+  <div class="lang-dropdown" id="langDropdown">
+    <button onclick="window.location.href='legal.html'">Français</button>
+    <button onclick="window.location.href='legal-en.html'">English</button>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="content">
+  <h1 class="neon-title">Legal Notice</h1>
+
+  <div class="glass-panel">
+    <h2>Site Publisher</h2>
+    <p>The website <strong>e-CV | Romain Luypaerts</strong> is published by:</p>
+    <p>
+      Name: Romain Luypaerts<br>
+      Address: 1 Avenue Edouard Herriot, Montmélian 73800, France<br>
+      Email: <a href="mailto:romain.luypaerts@gmail.com">romain.luypaerts@gmail.com</a><br>
+      Phone: +33 6 76 77 30 72
+    </p>
+
+    <h2>Hosting Provider</h2>
+    <p>This website is hosted by:</p>
+    <p>
+      Provider Name: Romain Luypaerts (Self-hosted)<br>
+      Address: 1 Avenue Edouard Herriot, Montmélian 73800, France<br>
+      Phone: +33 6 76 77 30 72<br>
+      Website: <a href="home.html">romain-luypaerts.com</a>
+    </p>
+
+    <h2>Intellectual Property</h2>
+    <p>All content present on this site (text, images, videos, logos) is protected by copyright and remains the property of Romain Luypaerts, unless otherwise stated. Any reproduction or use of the content without prior authorization is prohibited.</p>
+
+    <h2>Liability</h2>
+    <p>The publisher cannot be held responsible for direct or indirect damage resulting from access to or use of this site.</p>
+
+    <h2>External Links</h2>
+    <p>This site may contain links to other websites. The publisher is not responsible for the content of these external sites.</p>
+
+    <h2>Modification of Legal Notice</h2>
+    <p>The publisher reserves the right to modify this legal notice at any time without notice. Changes will be published on this page.</p>
+
+    <h2>Contact</h2>
+    <p>For any questions, you can contact us at: <a href="mailto:romain.luypaerts@gmail.com">romain.luypaerts@gmail.com</a>.</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2026 Romain Luypaerts</p>
+  <p>
+    <a href="privacy-en.html">Privacy Policy</a> / 
+    <a href="legal-en.html">Legal Notice</a>
+  </p>
+</footer>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+
+  function toggleLangMenu() {
+    const dropdown = document.getElementById("langDropdown");
+    dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+  }
+
+  window.onclick = function(e) {
+    if (!e.target.matches('.lang-globe')) {
+      const dropdown = document.getElementById("langDropdown");
+      if (dropdown && dropdown.style.display === "block") {
+        dropdown.style.display = "none";
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

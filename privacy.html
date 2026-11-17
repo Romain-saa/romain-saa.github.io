@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Politique de confidentialité | Romain Luypaerts</title>
+  <meta name="description" content="Politique de confidentialité du portfolio de Romain Luypaerts.">
+
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .legal {
+      border-left-width: 1px;
+    }
+
+    .legal:hover { transform: none; }
+
+    .legal h2 {
+      color: var(--accent);
+      font-size: 1.15em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 32px 0 10px;
+    }
+
+    .legal h2:first-of-type { margin-top: 0; }
+
+    .legal p { margin: 0 0 12px; }
+
+    .legal a { color: var(--accent); }
+    .legal a:hover { text-decoration: underline; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      color: var(--text-muted);
+      font-weight: 700;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .back-link svg { width: 18px; height: 18px; }
+
+    .back-link:hover,
+    .back-link:focus-visible { color: var(--accent); transform: translateX(-3px); }
+  </style>
+</head>
+
+<body>
+
+<div class="page-bg" aria-hidden="true"></div>
+
+<nav class="navbar" aria-label="Navigation principale">
+  <ul class="nav-links" id="navLinks">
+    <li><a href="accueil.html">Accueil</a></li>
+    <li><a href="projet.html">Projets</a></li>
+    <li><a href="veille.html">Veille</a></li>
+    <li><a href="CV.html">CV</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="a_propos.html">À propos de moi</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="burger" id="burgerButton"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false" aria-controls="navLinks">☰</button>
+  </div>
+</nav>
+
+<main class="page-main">
+  <a href="accueil.html" class="back-link" id="backLink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Retour</a>
+
+  <header class="page-head">
+    <h1 class="neon">Confidentialité</h1>
+  </header>
+
+  <article class="card legal">
+    <p>Votre vie privée est importante pour nous. Cette politique explique quelles informations sont collectées, comment elles sont utilisées et comment elles sont protégées dans le cadre de ce portfolio.</p>
+
+    <h2>1. Collecte des informations</h2>
+    <p>Nous pouvons collecter des informations personnelles uniquement lorsque vous nous contactez volontairement par email. Aucune donnée n'est collectée de manière automatique à votre insu.</p>
+
+    <h2>2. Utilisation des informations</h2>
+    <p>Les informations recueillies sont utilisées exclusivement pour répondre à vos demandes professionnelles. Vos données ne seront jamais vendues ou partagées avec des tiers à des fins commerciales.</p>
+
+    <h2>3. Cookies</h2>
+    <p>Ce site est conçu pour être le plus léger possible. Il utilise uniquement des cookies techniques essentiels. Aucun système de tracking publicitaire (type Google Analytics) n'est activé.</p>
+
+    <h2>4. Sécurité</h2>
+    <p>En tant qu'étudiant en informatique, j'accorde une importance capitale à la sécurité. Des mesures sont en place pour protéger vos échanges contre tout accès non autorisé.</p>
+
+    <h2>5. Vos droits</h2>
+    <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour toute demande, utilisez l'adresse de contact ci-dessous.</p>
+
+    <h2>6. Contact</h2>
+    <p>Pour toute question : <a href="mailto:romain.luypaerts@gmail.com">romain.luypaerts@gmail.com</a>.</p>
+  </article>
+</main>
+
+<footer>
+  <p>&copy; 2026 Romain Luypaerts</p>
+  <p>
+    <a href="privacy.html" aria-current="page">Politique de confidentialité</a> /
+    <a href="legal.html">Mentions légales</a>
+  </p>
+</footer>
+
+<script src="menu.js"></script>
+<script>
+  // Bouton retour : revient à la page précédente, sinon à l'accueil
+  document.getElementById("backLink").addEventListener("click", (e) => {
+    if (history.length > 1) {
+      e.preventDefault();
+      history.back();
+    }
+  });
+</script>
+
+</body>
+</html>

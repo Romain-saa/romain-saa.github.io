@@ -1,0 +1,356 @@
+/* =========================================================
+   STYLE COMMUN À TOUTES LES PAGES (sauf l'accueil, qui a
+   son propre style intégré mais utilise les mêmes couleurs)
+   ========================================================= */
+
+/* ===== POLICE HÉBERGÉE LOCALEMENT (RGPD) ===== */
+@font-face {
+  font-family: "Raleway";
+  src: url("fonts/raleway-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raleway";
+  src: url("fonts/raleway-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* ===== VARIABLES (les mêmes que l'accueil) ===== */
+:root {
+  --bg: #0a0d12;
+  --bg-elevated: #121821;
+  --bg-card: rgba(18, 24, 33, 0.82);
+  --bg-nav: rgba(10, 13, 18, 0.85);
+  --bg-footer: #06080c;
+
+  --text: #e6eaf0;
+  --text-muted: #8b95a5;
+
+  --accent: #38bdf8;
+  --accent-hover: #67cdfa;
+  --accent-light: #d4efff;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+  --accent-glow: rgba(56, 189, 248, 0.35);
+  --on-accent: #04121c;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --nav-height: 60px;
+}
+
+/* ===== GLOBAL ===== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Raleway", system-ui, sans-serif;
+  color: var(--text);
+}
+
+/* La couleur de fond est sur <html> seulement : sur <body>,
+   elle se dessinerait par-dessus la photo de fond */
+html { background-color: var(--bg); }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ===== FOND D'ÉCRAN (même photo que l'accueil) ===== */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(10, 13, 18, 0.72) 0%, rgba(10, 13, 18, 0.6) 40%, rgba(10, 13, 18, 0.8) 100%),
+    url("img/fond.jpg") center / cover no-repeat;
+}
+
+/* ===== MENU ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: var(--bg-nav);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  display: block;
+  padding: 18px 14px;
+  font-weight: 700;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--accent-light);
+  font-size: 20px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+/* ===== CONTENU DES PAGES ===== */
+.page-main {
+  flex: 1;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: calc(var(--nav-height) + 50px) 20px 80px;
+}
+
+.page-main.wide { max-width: 1150px; }
+
+.page-head {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.neon {
+  color: var(--accent-light);
+  font-size: 3em;
+  font-weight: 700;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 24px var(--accent-glow);
+}
+
+.subtitle {
+  color: var(--accent);
+  font-size: 1.15em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* Lisibilité des titres posés directement sur la photo */
+.page-head .neon { text-shadow: 0 0 24px var(--accent-glow), 0 2px 14px rgba(0, 0, 0, 0.8); }
+.page-head .subtitle,
+.page-intro { text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9); }
+
+.page-intro {
+  max-width: 680px;
+  margin: 20px auto 0;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ===== CARTES ===== */
+.card {
+  position: relative;
+  padding: 30px;
+  margin-bottom: 25px;
+  border-radius: 14px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s, border-color 0.35s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.35);
+  border-left-color: var(--accent);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45), 0 0 22px var(--accent-soft);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-head h2 {
+  margin: 0;
+  font-size: 1.35em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card p {
+  margin: 0;
+  color: #c3cad5;
+  line-height: 1.85;
+}
+
+/* Icône dans un rond bleuté */
+.icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+.icon svg { width: 24px; height: 24px; }
+
+.highlight {
+  color: var(--accent-light);
+  font-weight: 700;
+  background-color: var(--accent-soft);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* ===== BOUTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  border: 2px solid var(--accent);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btn svg { width: 18px; height: 18px; }
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  box-shadow: 0 0 20px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  background-color: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+/* ===== PIED DE PAGE ===== */
+footer {
+  background-color: var(--bg-footer);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 30px 20px;
+  border-top: 1px solid var(--border);
+}
+
+footer p { margin: 8px 0; }
+
+footer a {
+  color: var(--text-muted);
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+footer a:hover,
+footer a:focus-visible,
+footer a[aria-current="page"] { color: var(--accent); }
+
+/* ===== FOCUS CLAVIER ===== */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .burger { display: block; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links a[aria-current="page"] {
+    border-bottom: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+  }
+}
+
+@media (max-width: 600px) {
+  .page-main { padding-top: calc(var(--nav-height) + 35px); }
+  .neon { font-size: 2.1em; }
+  .subtitle { font-size: 1em; }
+  .card { padding: 22px; }
+  .card-head h2 { font-size: 1.15em; }
+}
+
+/* Respect des préférences "réduire les animations" */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

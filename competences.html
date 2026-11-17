@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Compétences | Romain Luypaerts</title>
+  <meta name="description" content="Les compétences techniques de Romain Luypaerts et son tableau de synthèse BTS SIO.">
+
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .skills {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 22px;
+    }
+
+    .skill-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .skill-value { color: var(--accent); }
+
+    .bar {
+      height: 12px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    /* La barre se remplit au chargement de la page */
+    .bar-fill {
+      height: 100%;
+      width: var(--value);
+      border-radius: 10px;
+      background: linear-gradient(90deg, #0ea5e9, var(--accent-hover));
+      box-shadow: 0 0 12px var(--accent-glow);
+      animation: fill 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    @keyframes fill { from { width: 0; } }
+
+    /* Miniature du tableau de synthèse */
+    .grille-thumb {
+      position: relative;
+      display: block;
+      width: 100%;
+      max-width: 340px;
+      margin: 24px auto 0;
+      padding: 0;
+      border: 2px solid var(--accent);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      cursor: zoom-in;
+      transition: transform 0.35s, box-shadow 0.35s;
+    }
+
+    .grille-thumb img { display: block; width: 100%; height: auto; }
+
+    .grille-thumb:hover,
+    .grille-thumb:focus-visible {
+      transform: translateY(-4px);
+      box-shadow: 0 0 26px var(--accent-glow);
+    }
+
+    .grille-hint {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px;
+      background-color: var(--accent);
+      color: var(--on-accent);
+      font-weight: 700;
+      font-family: inherit;
+      font-size: 0.95em;
+    }
+
+    .grille-hint svg { width: 18px; height: 18px; }
+
+    /* Visionneuse */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background-color: rgba(4, 6, 10, 0.94);
+    }
+
+    .lightbox[hidden] { display: none; }
+
+    .lightbox-frame {
+      position: relative;
+      cursor: crosshair;
+    }
+
+    .lightbox-frame img {
+      display: block;
+      max-width: 90vw;
+      max-height: 86vh;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .lens {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--accent-glow);
+      background-repeat: no-repeat;
+      pointer-events: none;
+      display: none;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      background-color: var(--bg-elevated);
+      color: var(--accent-light);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .lightbox-close:hover { background-color: var(--accent); color: var(--on-accent); }
+
+    /* Écrans tactiles : pas de loupe */
+    @media (hover: none) {
+      .lightbox-frame { cursor: default; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page-bg" aria-hidden="true"></div>
+
+<nav class="navbar" aria-label="Navigation principale">
+  <ul class="nav-links" id="navLinks">
+    <li><a href="accueil.html">Accueil</a></li>
+    <li><a href="projet.html">Projets</a></li>
+    <li><a href="veille.html">Veille</a></li>
+    <li><a href="CV.html">CV</a></li>
+    <li><a href="competences.html" aria-current="page">Compétences</a></li>
+    <li><a href="a_propos.html">À propos de moi</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="burger" id="burgerButton"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false" aria-controls="navLinks">☰</button>
+  </div>
+</nav>
+
+<main class="page-main">
+  <header class="page-head">
+    <h1 class="neon">Mes compétences</h1>
+    <p class="subtitle">Ce que je sais faire aujourd'hui</p>
+  </header>
+
+  <section class="card">
+    <ul class="skills">
+      <li class="skill">
+        <div class="skill-top"><span>HTML, CSS avec VS Code</span><span class="skill-value">35 %</span></div>
+        <div class="bar" role="progressbar" aria-label="HTML, CSS avec VS Code" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">
+          <div class="bar-fill" style="--value:35%"></div>
+        </div>
+      </li>
+      <li class="skill">
+        <div class="skill-top"><span>Word, Excel, PowerPoint</span><span class="skill-value">70 %</span></div>
+        <div class="bar" role="progressbar" aria-label="Word, Excel, PowerPoint" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+          <div class="bar-fill" style="--value:70%"></div>
+        </div>
+      </li>
+      <li class="skill">
+        <div class="skill-top"><span>Configuration Windows</span><span class="skill-value">50 %</span></div>
+        <div class="bar" role="progressbar" aria-label="Configuration Windows" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          <div class="bar-fill" style="--value:50%"></div>
+        </div>
+      </li>
+      <li class="skill">
+        <div class="skill-top"><span>Configuration Kali Linux, Ubuntu</span><span class="skill-value">30 %</span></div>
+        <div class="bar" role="progressbar" aria-label="Configuration Kali Linux, Ubuntu" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+          <div class="bar-fill" style="--value:30%"></div>
+        </div>
+      </li>
+      <li class="skill">
+        <div class="skill-top"><span>DHCP, DNS</span><span class="skill-value">40 %</span></div>
+        <div class="bar" role="progressbar" aria-label="DHCP, DNS" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+          <div class="bar-fill" style="--value:40%"></div>
+        </div>
+      </li>
+      <li class="skill">
+        <div class="skill-top"><span>Organisation et autonomie</span><span class="skill-value">85 %</span></div>
+        <div class="bar" role="progressbar" aria-label="Organisation et autonomie" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+          <div class="bar-fill" style="--value:85%"></div>
+        </div>
+      </li>
+      <li class="skill">
+        <div class="skill-top"><span>Root Me</span><span class="skill-value">15 %</span></div>
+        <div class="bar" role="progressbar" aria-label="Root Me" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
+          <div class="bar-fill" style="--value:15%"></div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="card synthese">
+    <div class="card-head">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></span>
+      <h2>Tableau de synthèse</h2>
+    </div>
+    <p>Mon tableau de synthèse des réalisations professionnelles (BTS SIO, option SISR). Clique dessus pour l'agrandir, puis passe la souris pour zoomer.</p>
+    <button type="button" class="grille-thumb" id="openGrille" aria-label="Agrandir le tableau de synthèse">
+      <img src="Grille.jpg" alt="Tableau de synthèse des réalisations professionnelles du BTS SIO de Romain Luypaerts" width="1275" height="1650">
+      <span class="grille-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg> Agrandir</span>
+    </button>
+  </section>
+
+  <!-- Visionneuse plein écran avec loupe -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Tableau de synthèse agrandi" hidden>
+    <button type="button" class="lightbox-close" id="closeGrille" aria-label="Fermer">✕</button>
+    <div class="lightbox-frame" id="lightboxFrame">
+      <img src="Grille.jpg" alt="Tableau de synthèse agrandi" id="lightboxImg">
+      <div class="lens" id="lens" aria-hidden="true"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 Romain Luypaerts</p>
+  <p>
+    <a href="privacy.html">Politique de confidentialité</a> /
+    <a href="legal.html">Mentions légales</a>
+  </p>
+</footer>
+
+<script src="menu.js"></script>
+<script>
+  // Visionneuse du tableau de synthèse avec loupe
+  const lightbox = document.getElementById("lightbox");
+  const frame = document.getElementById("lightboxFrame");
+  const bigImg = document.getElementById("lightboxImg");
+  const lens = document.getElementById("lens");
+  const openBtn = document.getElementById("openGrille");
+  const closeBtn = document.getElementById("closeGrille");
+  const ZOOM = 3;
+
+  function openLightbox() {
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+    closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.hidden = true;
+    lens.style.display = "none";
+    document.body.style.overflow = "";
+    openBtn.focus();
+  }
+
+  openBtn.addEventListener("click", openLightbox);
+  closeBtn.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
+  });
+
+  frame.addEventListener("mousemove", (e) => {
+    const rect = bigImg.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
+      lens.style.display = "none";
+      return;
+    }
+    const half = lens.offsetWidth / 2 || 90;
+    lens.style.display = "block";
+    lens.style.left = (x - half) + "px";
+    lens.style.top = (y - half) + "px";
+    lens.style.backgroundImage = "url('" + bigImg.src + "')";
+    lens.style.backgroundSize = (rect.width * ZOOM) + "px " + (rect.height * ZOOM) + "px";
+    lens.style.backgroundPosition = (-(x * ZOOM - half)) + "px " + (-(y * ZOOM - half)) + "px";
+  });
+
+  frame.addEventListener("mouseleave", () => { lens.style.display = "none"; });
+</script>
+
+</body>
+</html>

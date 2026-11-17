@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Privacy Policy | Romain Luypaerts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- External Styles -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700">
+
+  <style>
+    body, html {
+      margin: 0;
+      font-family: "Raleway", sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+    }
+
+    /* ===== BACK BUTTON ===== */
+    .back-btn {
+      position: fixed;
+      top: 80px;
+      left: 20px;
+      z-index: 1000;
+      background: rgba(0, 255, 136, 0.1);
+      color: #00FF88;
+      border: 1px solid #00FF88;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 24px;
+      backdrop-filter: blur(5px);
+      transform: rotate(180deg);
+    }
+
+    .back-btn:hover {
+      background: #00FF88;
+      color: black;
+      transform: rotate(180deg) scale(1.1);
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+    }
+
+    /* ===== CONTENT STYLING ===== */
+    .content {
+      max-width: 900px;
+      margin: 140px auto 80px;
+      padding: 0 20px;
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 255, 136, 0.1);
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .neon-title {
+      text-align: center;
+      color: #baffd9;
+      font-size: 3em;
+      font-weight: 700;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 0 15px rgba(186, 255, 217, 0.6);
+      text-decoration: underline;
+      text-underline-offset: 15px;
+      text-decoration-color: #00FF88;
+    }
+
+    h2 {
+      color: #00FF88;
+      margin-top: 35px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.3em;
+      letter-spacing: 1px;
+    }
+
+    p {
+      line-height: 1.8;
+      color: #bbb;
+      font-size: 1.05em;
+    }
+
+    a {
+      color: #00FF88;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== NAVBAR ===== */
+    .w3-top { z-index: 1001; }
+    .w3-bar {
+      background-color: rgba(0,0,0,0.9) !important;
+      backdrop-filter: blur(8px);
+      padding: 5px 0;
+    }
+
+    .w3-bar .w3-button {
+      font-weight: 600;
+      transition: all 0.3s;
+      color: white !important;
+      background: none !important;
+    }
+
+    .w3-bar .nav-active {
+      color: #00FF88 !important; 
+      border-bottom: 3px solid #00FF88 !important;
+    }
+
+    .w3-bar .w3-button:hover:not(.nav-active) {
+      color: #00FF88 !important;
+      transform: translateY(-2px);
+    }
+
+    /* ===== LANGUAGE MENU ===== */
+    .lang-menu { position: fixed; top: 15px; right: 20px; z-index: 2000; }
+    .lang-globe {
+      background-color: rgba(0,0,0,0.6);
+      border: 1px solid #00FF88;
+      border-radius: 50%;
+      padding: 10px 14px;
+      font-size: 18px;
+      cursor: pointer;
+      color: #ccffdd;
+      transition: 0.3s;
+    }
+    .lang-globe:hover { background-color: #00FF88; color: black; transform: scale(1.1); }
+
+    .lang-dropdown {
+      display: none; position: absolute; top: 55px; right: 0;
+      background-color: rgba(0,0,0,0.95);
+      border: 1px solid #00FF88; border-radius: 8px;
+      min-width: 140px; overflow: hidden;
+    }
+    .lang-dropdown button {
+      background: none; border: none; color: #ccffdd; padding: 12px 15px;
+      width: 100%; cursor: pointer; font-weight: 600; transition: 0.2s;
+    }
+    .lang-dropdown button:hover { background-color: rgba(0, 255, 136, 0.1); color: #00FF88; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #080808;
+      color: #888;
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid rgba(0, 255, 136, 0.1);
+    }
+    footer a { color: #888; margin: 0 10px; text-decoration: none; }
+    footer a:hover { color: #00FF88; }
+  </style>
+</head>
+
+<body>
+
+<!-- Back Button -->
+<div class="back-btn" onclick="goBack()" title="Back">
+  &#10140; 
+</div>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-card">
+    <a href="home.html" class="w3-bar-item w3-button">Home</a>
+    <a href="projects.html" class="w3-bar-item w3-button">Projects</a>
+    <a href="tech-watch.html" class="w3-bar-item w3-button">Tech Watch</a>
+    <a href="cv-en.html" class="w3-bar-item w3-button">CV</a>
+    <a href="skills.html" class="w3-bar-item w3-button">Skills</a>
+    <a href="about.html" class="w3-bar-item w3-button">About Me</a>
+    <a href="privacy-en.html" class="w3-bar-item w3-button nav-active">Privacy Policy</a>
+  </div>
+</div>
+
+<!-- Globe -->
+<div class="lang-menu">
+  <button class="lang-globe" onclick="toggleLangMenu()">🌐</button>
+  <div class="lang-dropdown" id="langDropdown">
+    <button onclick="window.location.href='privacy.html'">Français</button>
+    <button onclick="window.location.href='privacy-en.html'">English</button>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="content">
+  <h1 class="neon-title">Privacy Policy</h1>
+
+  <div class="glass-panel">
+    <p>Your privacy is important to us. This privacy policy explains what information is collected, how it is used, and how it is protected within the framework of this portfolio.</p>
+
+    <h2>1. Information Collection</h2>
+    <p>We may collect personal information only when you voluntarily contact us via email. We do not collect sensitive information, financial data, or browsing history through hidden trackers.</p>
+
+    <h2>2. Use of Information</h2>
+    <p>The information collected is used solely to respond to your inquiries and improve your website experience. We do not sell, rent, or share your data with third parties for marketing purposes.</p>
+
+    <h2>3. Cookies</h2>
+    <p>Our site only uses essential cookies required for basic functionality. No advertising or behavioral tracking cookies are implemented on this site.</p>
+
+    <h2>4. Security</h2>
+    <p>We implement reasonable security measures to protect your information from unauthorized access, modification, or disclosure. However, please remember that no method of transmission over the internet is 100% secure.</p>
+
+    <h2>5. Your Rights</h2>
+    <p>In accordance with data protection regulations (GDPR), you have the right to access your information, correct it, or request its deletion. To exercise these rights, please contact us via the email provided below.</p>
+
+    <h2>6. Contact</h2>
+    <p>For any questions regarding this privacy policy, you can contact us at: <a href="mailto:romain.luypaerts@gmail.com">romain.luypaerts@gmail.com</a>.</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2026 Romain Luypaerts</p>
+  <p>
+    <a href="privacy-en.html">Privacy Policy</a> /
+    <a href="legal-en.html">Legal Notice</a>
+  </p>
+</footer>
+
+<!-- Scripts -->
+<script>
+  // Back function
+  function goBack() {
+    window.history.back();
+  }
+
+  function toggleLangMenu() {
+    const dropdown = document.getElementById("langDropdown");
+    dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+  }
+
+  window.onclick = function(e) {
+    if (!e.target.matches('.lang-globe')) {
+      const dropdown = document.getElementById("langDropdown");
+      if (dropdown && dropdown.style.display === "block") {
+        dropdown.style.display = "none";
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

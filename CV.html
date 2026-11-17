@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CV | Romain Luypaerts</title>
+  <meta name="description" content="CV de Romain Luypaerts, technicien informatique en alternance (BTS SIO option SISR) chez Synchro Bus.">
+
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+  <style>
+    /* ===== POLICE HÉBERGÉE LOCALEMENT (RGPD) =====
+       Télécharge Raleway (400 et 700) en .woff2 via google-webfonts-helper
+       et place les fichiers dans un dossier /fonts. */
+    @font-face {
+      font-family: "Raleway";
+      src: url("fonts/raleway-400.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Raleway";
+      src: url("fonts/raleway-700.woff2") format("woff2");
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    /* ===== VARIABLES ===== */
+    :root {
+      /* Fonds : noir légèrement teinté bleu, plus doux que le noir pur */
+      --bg: #0a0d12;
+      --bg-elevated: #121821;
+      --bg-nav: rgba(10, 13, 18, 0.85);
+      --bg-footer: #06080c;
+
+      /* Textes */
+      --text: #e6eaf0;
+      --text-muted: #8b95a5;
+
+      /* Accent : bleu cyan */
+      --accent: #38bdf8;
+      --accent-hover: #67cdfa;
+      --accent-light: #d4efff;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --accent-glow: rgba(56, 189, 248, 0.35);
+      --on-accent: #04121c; /* texte posé sur un fond accent */
+
+      /* Bordures discrètes */
+      --border: rgba(255, 255, 255, 0.08);
+
+      --nav-height: 60px;
+    }
+
+    /* ===== GLOBAL ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: "Raleway", system-ui, sans-serif;
+      color: var(--text);
+    }
+
+    html { background-color: var(--bg); }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      background-color: var(--bg-nav);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 18px 14px;
+      font-weight: 700;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .nav-links a[aria-current="page"] {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Bouton burger (mobile uniquement) */
+    .burger {
+      display: none;
+      background: none;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      color: var(--accent-light);
+      font-size: 20px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+
+
+
+
+
+
+
+
+
+    /* ===== TITRES ===== */
+    .neon {
+      color: var(--accent-light);
+      font-size: 3.5em;
+      font-weight: 700;
+      margin: 0 0 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 24px var(--accent-glow);
+    }
+
+    .subtitle {
+      color: var(--accent);
+      font-size: 1.3em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0 25px;
+    }
+
+    /* ===== BOUTONS ===== */
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-weight: 700;
+      border: 2px solid var(--accent);
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--on-accent);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background-color: var(--accent-hover);
+      border-color: var(--accent-hover);
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline { color: var(--accent); }
+
+    .btn-outline:hover,
+    .btn-outline:focus-visible {
+      background-color: var(--accent-soft);
+      transform: translateY(-2px);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: var(--bg-footer);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p { margin: 8px 0; }
+
+    footer a {
+      color: var(--text-muted);
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+
+    footer a:hover,
+    footer a:focus-visible { color: var(--accent); }
+
+    /* ===== FOCUS CLAVIER ===== */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .burger { display: block; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background-color: var(--bg-elevated);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a {
+        padding: 15px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links a[aria-current="page"] {
+        border-bottom: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+      }
+    }
+
+    /* ===== FOND DE PAGE (même photo que l'accueil, plus sombre) ===== */
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(10, 13, 18, 0.72) 0%, rgba(10, 13, 18, 0.6) 40%, rgba(10, 13, 18, 0.8) 100%),
+        url("img/fond.jpg") center / cover no-repeat;
+    }
+
+    /* ===== PAGE CV ===== */
+    .cv-main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: calc(var(--nav-height) + 50px) 20px 70px;
+      text-align: center;
+    }
+
+    .page-intro {
+      color: var(--text);
+      line-height: 1.7;
+      max-width: 620px;
+      margin: 0 auto 30px;
+    }
+
+    .cv-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 45px;
+    }
+
+    /* Le CV présenté comme une feuille posée sur le bureau */
+    .cv-sheet {
+      margin: 0 auto;
+      max-width: 794px; /* largeur d'une page A4 à l'écran */
+    }
+
+    .cv-sheet a {
+      display: block;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(56, 189, 248, 0.15);
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s;
+    }
+
+    .cv-sheet a:hover,
+    .cv-sheet a:focus-visible {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.7), 0 0 30px var(--accent-glow);
+    }
+
+    .cv-sheet img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .cv-sheet figcaption {
+      margin-top: 15px;
+      color: var(--text-muted);
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      .neon { font-size: 2.2em; }
+      .subtitle { font-size: 1.05em; }
+      .btn { width: 100%; }
+      .cv-main { padding-top: calc(var(--nav-height) + 35px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page-bg" aria-hidden="true"></div>
+
+<nav class="navbar" aria-label="Navigation principale">
+  <ul class="nav-links" id="navLinks">
+    <li><a href="accueil.html">Accueil</a></li>
+    <li><a href="projet.html">Projets</a></li>
+    <li><a href="veille.html">Veille</a></li>
+    <li><a href="CV.html" aria-current="page">CV</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="a_propos.html">À propos de moi</a></li>
+  </ul>
+
+  <div class="nav-right">
+
+    <button class="burger" id="burgerButton"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false" aria-controls="navLinks">☰</button>
+  </div>
+</nav>
+
+<main class="cv-main">
+  <h1 class="neon">Mon CV</h1>
+  <p class="subtitle">Technicien informatique · BTS SIO SISR</p>
+  <p class="page-intro">
+    Ancien ambulancier diplômé d'État, je suis en reconversion dans l'informatique
+    et en alternance chez Synchro Bus depuis septembre 2025.
+  </p>
+
+  <div class="cv-actions">
+    <a href="docs/CV_Romain_Luypaerts.pdf" class="btn btn-primary"
+       download="CV_Romain_Luypaerts.pdf">⬇ Télécharger mon CV (PDF)</a>
+    <a href="docs/CV_Romain_Luypaerts.pdf" class="btn btn-outline"
+       target="_blank" rel="noopener">Ouvrir en plein écran</a>
+  </div>
+
+  <figure class="cv-sheet">
+    <a href="docs/CV_Romain_Luypaerts.pdf" target="_blank" rel="noopener"
+       aria-label="Ouvrir mon CV en PDF dans un nouvel onglet">
+      <img src="img/cv-page.jpg" width="1240" height="1755" loading="lazy"
+           alt="CV de Romain Luypaerts, technicien informatique dans le réseau : expérience chez Synchro Bus en alternance depuis septembre 2025, ambulancier diplômé d'État de 2020 à 2025, BTS SIO en cours à ECORIS Chambéry.">
+    </a>
+    <figcaption>Clique sur le CV pour l'ouvrir en PDF.</figcaption>
+  </figure>
+</main>
+
+<footer>
+  <p>&copy; 2026 Romain Luypaerts</p>
+  <p>
+    <a href="privacy.html">Politique de confidentialité</a> /
+    <a href="legal.html">Mentions légales</a>
+  </p>
+</footer>
+
+<script>
+  const burgerButton = document.getElementById("burgerButton");
+  const navLinks = document.getElementById("navLinks");
+
+  function setMenu(open) {
+    navLinks.classList.toggle("open", open);
+    burgerButton.setAttribute("aria-expanded", String(open));
+    burgerButton.textContent = open ? "✕" : "☰";
+    burgerButton.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+  }
+
+  burgerButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setMenu(!navLinks.classList.contains("open"));
+  });
+
+  // Ferme le menu au clic ailleurs ou avec la touche Échap
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".nav-links")) setMenu(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setMenu(false);
+  });
+</script>
+
+</body>
+</html>

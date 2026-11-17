@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Veille | Romain Luypaerts</title>
+  <meta name="description" content="La veille technologique de Romain Luypaerts : cybersécurité, intelligence artificielle, RGPD et administration systèmes.">
+
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .veille-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 22px;
+    }
+
+    .veille-card {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    .veille-card h2 {
+      margin: 14px 0 10px;
+      font-size: 1.25em;
+      color: var(--text);
+    }
+
+    .veille-card p { flex-grow: 1; margin-bottom: 18px; }
+
+    .tag {
+      align-self: flex-start;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-cyber { background: rgba(248, 113, 113, 0.14); color: #fca5a5; }
+    .tag-ia    { background: rgba(167, 139, 250, 0.16); color: #c4b5fd; }
+    .tag-rgpd  { background: rgba(251, 191, 36, 0.14); color: #fcd34d; }
+
+    .source {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.9em;
+    }
+
+    .source svg { width: 15px; height: 15px; }
+  </style>
+</head>
+
+<body>
+
+<div class="page-bg" aria-hidden="true"></div>
+
+<nav class="navbar" aria-label="Navigation principale">
+  <ul class="nav-links" id="navLinks">
+    <li><a href="accueil.html">Accueil</a></li>
+    <li><a href="projet.html">Projets</a></li>
+    <li><a href="veille.html" aria-current="page">Veille</a></li>
+    <li><a href="CV.html">CV</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="a_propos.html">À propos de moi</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="burger" id="burgerButton"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false" aria-controls="navLinks">☰</button>
+  </div>
+</nav>
+
+<main class="page-main wide">
+  <header class="page-head">
+    <h1 class="neon">Actualités IT</h1>
+    <p class="subtitle">Ma veille technologique</p>
+    <p class="page-intro">
+      Vous trouverez ici des contenus régulièrement mis à jour sur l'actualité informatique.
+      L'objectif est de proposer une veille claire et qualitative afin d'aider chacun à mieux comprendre,
+      apprendre et approfondir ses connaissances en informatique.
+    </p>
+  </header>
+
+  <div class="veille-grid">
+    <a href="https://www.lemondeinformatique.fr" target="_blank" rel="noopener" class="card veille-card">
+      <span class="tag tag-cyber">Cybersécurité</span>
+      <h2>Nouvelles cybermenaces en 2026</h2>
+      <p>Analyse des nouvelles attaques informatiques et des moyens mis en place pour renforcer la sécurité des systèmes.</p>
+      <span class="source">Source : Le Monde Informatique <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
+    </a>
+
+    <a href="https://www.zdnet.fr" target="_blank" rel="noopener" class="card veille-card">
+      <span class="tag tag-ia">Intelligence artificielle</span>
+      <h2>L'IA générative au cœur des entreprises</h2>
+      <p>Utilisation de l'IA générative dans les processus métiers et impacts sur les compétences informatiques.</p>
+      <span class="source">Source : ZDNet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
+    </a>
+
+    <a href="https://www.cnil.fr" target="_blank" rel="noopener" class="card veille-card">
+      <span class="tag tag-rgpd">RGPD</span>
+      <h2>Nouvelles obligations RGPD en 2026</h2>
+      <p>Évolutions de la réglementation sur la protection des données et responsabilités des entreprises.</p>
+      <span class="source">Source : CNIL <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
+    </a>
+
+    <a href="https://www.it-connect.fr/" target="_blank" rel="noopener" class="card veille-card">
+      <span class="tag tag-cyber">Admin / Sécurité</span>
+      <h2>Tutoriels systèmes et réseaux</h2>
+      <p>Plateforme d'apprentissage orientée systèmes, réseaux, cybersécurité, PowerShell et virtualisation.</p>
+      <span class="source">Source : IT-Connect <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
+    </a>
+
+    <a href="https://lecrabeinfo.net/" target="_blank" rel="noopener" class="card veille-card">
+      <span class="tag tag-ia">Dépannage IT</span>
+      <h2>Tutoriels et guides pas à pas</h2>
+      <p>Tutoriels clairs pour installer Windows, réparer son PC, gérer partitions et résoudre les pannes courantes.</p>
+      <span class="source">Source : Le Crabe Info <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
+    </a>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 Romain Luypaerts</p>
+  <p>
+    <a href="privacy.html">Politique de confidentialité</a> /
+    <a href="legal.html">Mentions légales</a>
+  </p>
+</footer>
+
+<script src="menu.js"></script>
+
+</body>
+</html>
