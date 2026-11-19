@@ -213,9 +213,7 @@
     .subtitle {
       color: var(--accent);
       font-size: 1.3em;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-weight: 600;
       margin: 0 0 25px;
     }
 
@@ -478,16 +476,6 @@
       color: var(--on-accent);
     }
 
-    /* ===== EFFET MACHINE À ÉCRIRE (idée 3) ===== */
-    .typed::after {
-      content: "_";
-      margin-left: 2px;
-      color: var(--accent-light);
-      animation: blink 1s steps(1) infinite;
-    }
-
-    @keyframes blink { 50% { opacity: 0; } }
-
     /* Apparition en fondu, élément par élément */
     .fade-up {
       opacity: 0;
@@ -610,7 +598,7 @@
       <h1 class="neon fade-up delay-1">Romain Luypaerts</h1>
 
       <!-- À PERSONNALISER : SISR ou SLAM -->
-      <p class="subtitle fade-up delay-2"><span class="typed" id="typed" data-text="Alternant en BTS SIO · option SISR">Alternant en BTS SIO · option SISR</span></p>
+      <p class="subtitle fade-up delay-2">Alternant en BTS SIO, option SISR</p>
 
       <!-- À PERSONNALISER : entreprise et centres d'intérêt -->
       <p class="pitch fade-up delay-3">
@@ -700,21 +688,6 @@
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") setMenu(false);
   });
-
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  // Effet machine à écrire sur le sous-titre
-  const typed = document.getElementById("typed");
-  if (typed && !reduceMotion) {
-    const text = typed.dataset.text;
-    typed.parentElement.setAttribute("aria-label", text);
-    typed.textContent = "";
-    let i = 0;
-    setTimeout(function type() {
-      typed.textContent = text.slice(0, ++i);
-      if (i < text.length) setTimeout(type, 55);
-    }, 600);
-  }
 
   // Panneau "Me contacter"
   const contactToggle = document.getElementById("contactToggle");
