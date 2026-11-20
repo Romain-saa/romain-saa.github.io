@@ -181,13 +181,15 @@
       background: #fff;
     }
 
+    /* Loupe carrée */
     .lens {
       position: absolute;
-      width: 180px;
-      height: 180px;
+      width: 320px;
+      height: 320px;
       border: 2px solid var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 20px var(--accent-glow);
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 24px var(--accent-glow);
       background-repeat: no-repeat;
       pointer-events: none;
       display: none;
@@ -351,9 +353,11 @@
   const lens = document.getElementById("lens");
   const openBtn = document.getElementById("openGrille");
   const closeBtn = document.getElementById("closeGrille");
-  const ZOOM = 3;
+  const ZOOM = 2.6;
+  const HD_SRC = "img/tableau-synthese-hd.jpg"; // version haute définition pour la loupe
 
   function openLightbox() {
+    new Image().src = HD_SRC; // précharge la version nette
     lightbox.hidden = false;
     document.body.style.overflow = "hidden";
     closeBtn.focus();
@@ -381,11 +385,11 @@
       lens.style.display = "none";
       return;
     }
-    const half = lens.offsetWidth / 2 || 90;
     lens.style.display = "block";
+    const half = lens.offsetWidth / 2; // mesuré une fois la loupe affichée
     lens.style.left = (x - half) + "px";
     lens.style.top = (y - half) + "px";
-    lens.style.backgroundImage = "url('" + bigImg.src + "')";
+    lens.style.backgroundImage = "url('" + HD_SRC + "')";
     lens.style.backgroundSize = (rect.width * ZOOM) + "px " + (rect.height * ZOOM) + "px";
     lens.style.backgroundPosition = (-(x * ZOOM - half)) + "px " + (-(y * ZOOM - half)) + "px";
   });
